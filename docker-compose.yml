@@ -101,6 +101,9 @@ services:
     environment:
       EVOLUTION_BASE_URL: http://evolution:8080
       EVOLUTION_WEBHOOK_URL: http://backend:8000/webhook/evolution
+      # Dentro del contenedor, localhost es el propio contenedor.
+      # Usa host.docker.internal para alcanzar Ollama en la máquina anfitriona.
+      LLM_BASE_URL: ${LLM_BASE_URL_DOCKER:-http://host.docker.internal:11434/v1}
       TZ: America/Bogota
       LOG_LEVEL: INFO
     extra_hosts:
